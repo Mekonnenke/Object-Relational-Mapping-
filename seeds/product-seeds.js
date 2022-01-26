@@ -44,4 +44,4 @@ module.exports = seedProducts;
 //    ("Running Sneakers", "90.00", "25", "5"),
 //    ("Branded Baseball Hats", "22.99", "12", "4"),
 //    ("Top 40 Music Compilation Vinyl Record", "12.99", "50", "3"),
-//    ("Cargo Shorts", "29.99", "22", "2");
+//    ("Cargo Shorts", "29.99", "22", "2");y

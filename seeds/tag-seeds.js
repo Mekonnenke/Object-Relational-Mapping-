@@ -34,13 +34,13 @@ module.exports = seedTags;
 
 
 
-INSERT INTO tag
-(tag_name)
-VALUES
-("rock music"),
-("blue"),
-("red "),
-("green"),
-("ehite"),
-("gold"),
-("pop calture");
+// INSERT INTO tag
+// (tag_name)
+// VALUES
+// ("rock music"),
+// ("blue"),
+// ("red "),
+// ("green"),
+// ("ehite"),
+// ("gold"),
+// ("pop calture");

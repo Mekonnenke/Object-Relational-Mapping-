@@ -27,6 +27,7 @@ module.exports = seedCategories;
 // INSERT INTO category
 // (category_name)
 // VALUES
+// ("Shirts"),
 // ("Shorts"),
 // ("Music"),
 // ("Hats"),

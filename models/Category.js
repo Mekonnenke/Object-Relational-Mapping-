@@ -28,3 +28,10 @@ Category.init(
 );
 
 module.exports = Category;
+
+
+
+// INSERT INTO category
+// (category_name)
+// VALUES
+// ("Plain T-Shirt", "14.99", "14", "1");
