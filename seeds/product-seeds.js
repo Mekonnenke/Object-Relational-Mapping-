@@ -37,7 +37,7 @@ const seedProducts = () => Product.bulkCreate(productData);
 
 module.exports = seedProducts;
 
-// INSERT INTO product 
+// INSERT INTO product
 // (product_name, price, stock, category_id)
 // VALUES
 //    ("Plain T-Shirt", "14.99", "14", "1"),
