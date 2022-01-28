@@ -23,6 +23,7 @@ Note: You can see the 'Installation' video in the Important Links section, if yo
 node server.js
   
   video link: https://youtu.be/FLwu5bVqSUQ
+  
               https://watch.screencastify.com/v/YXYcA1KHVgShDUhfPy1F
   
   Github: https://github.com/Mekonnenke/Object-Relational-Mapping-
