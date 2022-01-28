@@ -2,11 +2,7 @@
 
 The focus of this homework assignment for the University of Toronto SCS Coding Boot Camp was to build the back end for an e-commerce site by modifying starter code. Technologies used included MySQL, MySQL2, Sequelize, Express, Insomnia and dotenv package.
 
-Key Features
-
-![image1](https://user-images.githubusercontent.com/90818220/151480971-2b50bf00-4515-43d5-bc11-0e858d66ed5b.jpg)
-![image2](https://user-images.githubusercontent.com/90818220/151481014-ec6d9eb4-d238-4a65-a9c3-9a5b07d1164d.jpg)
-
+* Key Features
 First, install the necessary dependencies, using the following command:
 
 npm install 
@@ -27,6 +23,9 @@ Note: You can see the 'Installation' video in the Important Links section, if yo
 node server.js
   
   video link: https://youtu.be/FLwu5bVqSUQ
+              https://watch.screencastify.com/v/YXYcA1KHVgShDUhfPy1F
+  
+  Github: https://github.com/Mekonnenke/Object-Relational-Mapping-
   
   ![image1](https://user-images.githubusercontent.com/90818220/151480971-2b50bf00-4515-43d5-bc11-0e858d66ed5b.jpg)
-![image2](https://user-images.githubusercontent.com/90818220/151481014-ec6d9eb4-d238-4a65-a9c3-9a5b07d1164d.jpg)
+ 
