@@ -11,16 +11,12 @@ router.get('/', (req, res) => {
         model: Product,
       }
     ]
-  })
-  .then(data=>
-  {
-    res.json(data);
-  })
-  .catch(err => 
-  {
-    console.log(err);
-    res.status(400).json(err);
-  });
+  }).then(dbCategoryData=>
+    res.json(dbCategoryData))
+    .catch(err => {
+      console.log(err);
+      res.status(400).json(err);
+    });
 });
 
 router.get('/:id', (req, res) => {
@@ -35,65 +31,68 @@ router.get('/:id', (req, res) => {
         model: Product
       }
     ]
+  }).then(dbCategoryData=>{
+    if (!dbCategoryData) {
+      res.status(404).json({ message: 'No category found with this id' });
+      return;
+    }
+    res.json(dbColorData);
   })
-  .then(data=>
-  {
-    res.json(data);
-  })
-  .catch(err => 
-  {
-    console.log(err);
-    res.status(400).json(err);
-  });
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
-
+// expects {catgory_name: 'Shoe'}
 router.post('/', (req, res) => {
   Category.create(req.body)
-  .then(data=>
-  {
-    res.json(data);
-  })
-  .catch(err => 
-  {
-    console.log(err);
-    res.status(400).json(err);
-  });
+    .then(dbCategorydata=> res.json(dbCategorydata))
+    .catch(err => {
+      console.log(err);
+      res.status(400).json(err);
+    });
 });
 
 router.put('/:id', (req, res) => {
+  // expects {catgory_name: 'Shoe'}
   Category.update(req.body,{
     where:
     {
       id: req.params.id
     }
   })
-  .then(data=>
-  {
-    res.json(data);
-  })
-  .catch(err => 
-  {
-    console.log(err);
-    res.status(400).json(err);
-  });
+    .then(dbCategoryData => {
+      if (!dbCategoryData[0]) {
+        res.status(404).json({ message: 'No categoryfound with this id' });
+        return;
+      }
+      res.json(dbCategoryData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
+// DELETE /api/makes/1
+// DELETE /api/makes/1
 router.delete('/:id', (req, res) => {
   Category.destroy({
-    where:
-    {
+    where: {
       id: req.params.id
     }
   })
-  .then(data=>
-  {
-    res.json(data);
-  })
-  .catch(err => 
-  {
-    console.log(err);
-    res.status(400).json(err);
-  });
+    .then(dbCategoryData => {
+      if (!dbCategoryData) {
+        res.status(404).json({ message: 'No  category found with this id' });
+        return;
+      }
+      res.json(dbCategoryData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 module.exports = router;

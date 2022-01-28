@@ -19,15 +19,11 @@ router.get('/', (req, res) => {
       }
     ]
   })
-  .then(data=>
-  {
-    res.json(data);
-  })
-  .catch(err => 
-  {
-    console.log(err);
-    res.status(400).json(err);
-  });
+.then(dbProductData => res.json(dbProductData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 // get one product
@@ -50,30 +46,25 @@ router.get('/:id', (req, res) => {
       }
     ]
   })
-  .then(data=>
-  {
-    res.json(data);
-  })
-  .catch(err => 
-  {
-    console.log(err);
-    res.status(400).json(err);
-  });
+    .then(dbProductData => {
+      if (!dbProductData) {
+        res.status(404).json({ message: 'No manufacturer found with this id' });
+        return;
+      }
+      res.json(dbProductData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 // create new product
 router.post('/', (req, res) => {
-  /* req.body should look like this...
-    {
-      product_name: "Basketball",
-      price: 200.00,
-      stock: 3,
-      tagIds: [1, 2, 3, 4]
-    }
-  */
+  // expects {product_name: 'Honda', price: '19.00', stock: '3', stock: '9'}
   Product.create(req.body)
     .then((product) => {
-      // if there's product tags, we need to create pairings to bulk create in the ProductTag model
+
       if (req.body.tagIds) {
         const productTagIdArr = req.body.tagIds.map((tag_id) => {
           return {
@@ -83,25 +74,24 @@ router.post('/', (req, res) => {
         });
         return ProductTag.bulkCreate(productTagIdArr);
       }
-      // if no product tags, just respond
+
       res.status(200).json(product);
     })
     .then((productTagIds) => res.status(200).json(productTagIds))
     .catch((err) => {
       console.log(err);
-      res.status(400).json(err);
+      res.status(500).json(err);
     });
 });
 
 // update product
 router.put('/:id', (req, res) => {
-  // update product data
   Product.update(req.body, {
     where: {
       id: req.params.id,
     },
   })
-    .then((product) => {
+    .then((productId) => {
       // find all associated tags from ProductTag
       return ProductTag.findAll({ where: { product_id: req.params.id } });
     })
@@ -137,15 +127,20 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   Product.destroy({
-    where:
-    {
-      id:req.params.id
+    where: {
+      id: req.params.id
     }
   })
-  .then((data) => res.json(data))
-    .catch((err) => {
-      // console.log(err);
-      res.status(400).json(err);
+    .then(dbProductData => {
+      if (!dbProductData) {
+        res.status(404).json({ message: 'No  manufacture found with this id' });
+        return;
+      }
+      res.json(dbProductData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
     });
 });
 
